@@ -1,36 +1,37 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Internship Assignment - WhatBytes
 
-## Getting Started
+## Overview
 
-First, run the development server:
+This project is developed for the internship assignment at WhatBytes. The objective is to create a responsive page using Next.js and Tailwind CSS. The page features sections for "Skill-wise" and "Question Analysis" that adjust their layout based on the screen size.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Requirements
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **Framework**: Next.js
+- **Styling**: Tailwind CSS
+- **Libraries**:Shad cn UI.
+- **Responsive Design**: "Skill-wise" and "Question Analysis" sections move to the bottom on smaller screens.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Setup
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. **Clone the Repository**
 
-## Learn More
+   ```bash
+   git clone https://github.com/abduldevlop/WhatBytes-Assigment.git
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+1. **Navigate to the Project Directory**
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+   ```bash
+   cd WhatBytes-Assigment
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. **Install Dependencies**
 
-## Deploy on Vercel
+   ```bash
+   npm install
+   ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. **Run the Development Server**
+   ```bash
+    npm run dev
+   ```
