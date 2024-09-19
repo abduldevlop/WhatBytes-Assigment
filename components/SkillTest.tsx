@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState, ChangeEvent, FormEvent } from "react";
+import { useEffect, useState, ChangeEvent } from "react";
 import html from "@/assets/html.png";
 import trophy from "@/assets/trophy.png";
 import notepad from "@/assets/notepad.png";
