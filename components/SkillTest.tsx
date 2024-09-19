@@ -15,7 +15,7 @@ import {
 } from "@/components/ui/dialog";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
-import Chart from "./Chart"; // Assuming Chart is a valid component
+import Chart from "./Chart";
 
 interface FormData {
   rank: string;
@@ -78,7 +78,7 @@ const SkillTest: React.FC = () => {
     return newErrors;
   };
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = () => {
     // e.preventDefault();
 
     const validationErrors = validateForm();
