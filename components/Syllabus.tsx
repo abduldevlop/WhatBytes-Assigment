@@ -1,20 +1,36 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
 import target from "../assets/target.png";
 import Image from "next/image";
 const Syllabus = () => {
-  const totalQuestions = 15;
-  const correctAnswers = 10;
+  const [correctAnswers, setCorrectAnswers] = useState<number>(0); // State to store correct answers
+  const totalQuestions = 15; // Total number of questions
+
+  // Fetch data from localStorage when component mounts
+  useEffect(() => {
+    const storedData = localStorage.getItem("formData");
+
+    if (storedData) {
+      const parsedData = JSON.parse(storedData);
+      // Ensure the correct data is being fetched, assuming "correctAnswer" exists in the formData
+      const correctAnswerFromStorage = parsedData.correctAnswer
+        ? parseInt(parsedData.correctAnswer, 10)
+        : 0;
+      setCorrectAnswers(correctAnswerFromStorage); // Set correct answers from localStorage
+    }
+  }, []);
+
   const incorrectAnswers = totalQuestions - correctAnswers;
 
-  // Data to represent the pie chart
+  // Data for the pie chart
   const data = [
     { category: "Correct Answers", count: correctAnswers },
     { category: "Incorrect Answers", count: incorrectAnswers },
   ];
 
-  const COLORS = ["#3B7DF4", "#E9F1FD"];
+  const COLORS = ["#3B7DF4", "#E9F1FD"]; // Define the colors for the pie chart
+
   return (
     <div className="mt-20">
       <div className="border border-[#E7EBEF] px-5 p-4 mr-5 rounded-md ">
@@ -86,15 +102,15 @@ const Syllabus = () => {
       <div className="flex flex-col  mt-5 border border-[#E7EBEF] px-5 p-4 mr-5 rounded-md ">
         <div className="flex justify-between">
           <h1 className="font-bold">Question Alalysis</h1>
-          <p className="font-bold text-blue-600">10/15</p>
+          <p className="font-bold text-blue-600">{correctAnswers} /15</p>
         </div>
         <p className="mt-2 text-sm">
-          <b>You scored 10 question correct out of 15.</b> However it still
-          needs some improvements
+          <b>You scored {correctAnswers} question correct out of 15.</b> However
+          it still needs some improvements
         </p>
         <div style={{ position: "relative", width: "100%", height: 300 }}>
           <ResponsiveContainer>
-            <PieChart width={700} height={400}>
+            <PieChart>
               <Pie
                 data={data}
                 labelLine={false}
@@ -114,7 +130,6 @@ const Syllabus = () => {
           <Image
             src={target}
             alt="target"
-            // alt="Center Image"
             style={{
               position: "absolute",
               top: "50%",

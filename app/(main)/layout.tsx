@@ -9,7 +9,7 @@ const MainLayout = ({ children }: { children: React.ReactNode }) => {
 
       {/* Sidebar and content layout */}
       <div className="flex">
-        {/* Sidebar (fixed and hidden on small screens) */}
+        {/* Sidebar  */}
         <div className={` w-64 h-screen md:block hidden`}>
           <SideBar />
         </div>

@@ -20,14 +20,14 @@ import Chart from "./Chart"; // Assuming Chart is a valid component
 interface FormData {
   rank: string;
   percentile: string;
-  currentScore: string;
+  correctAnswer: string;
 }
 
 const SkillTest: React.FC = () => {
   const [formData, setFormData] = useState<FormData>({
     rank: "",
     percentile: "",
-    currentScore: "",
+    correctAnswer: "",
   });
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
   const [isDialogOpen, setIsDialogOpen] = useState<boolean>(false);
@@ -64,14 +64,14 @@ const SkillTest: React.FC = () => {
     ) {
       newErrors.percentile = "Percentile must be between 0 and 100";
     }
-    if (!formData.currentScore) {
-      newErrors.currentScore = "Current score is required";
-    } else if (isNaN(Number(formData.currentScore))) {
-      newErrors.currentScore = "Current score must be a number";
+    if (!formData.correctAnswer) {
+      newErrors.correctAnswer = "Current score is required";
+    } else if (isNaN(Number(formData.correctAnswer))) {
+      newErrors.correctAnswer = "Current score must be a number";
     } else {
-      const score = Number(formData.currentScore);
+      const score = Number(formData.correctAnswer);
       if (score > 15) {
-        newErrors.currentScore = "Max score is 15";
+        newErrors.correctAnswer = "Max score is 15";
       }
     }
 
@@ -79,7 +79,7 @@ const SkillTest: React.FC = () => {
   };
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+    // e.preventDefault();
 
     const validationErrors = validateForm();
     if (Object.keys(validationErrors).length > 0) {
@@ -206,15 +206,15 @@ const SkillTest: React.FC = () => {
                         type="number"
                         placeholder="Current Score"
                         className={`w-40 focus:border-[#8fa5ce] focus:ring-0 text-black font-bold ${
-                          errors.currentScore && "border-red-500 focus:ring-0 "
+                          errors.correctAnswer && "border-red-500 focus:ring-0 "
                         } `}
-                        name="currentScore"
-                        value={formData.currentScore}
+                        name="correctAnswer"
+                        value={formData.correctAnswer}
                         onChange={handleInputChange}
                       />
-                      {errors.currentScore && (
+                      {errors.correctAnswer && (
                         <span className="text-red-500">
-                          {errors.currentScore}
+                          {errors.correctAnswer}
                         </span>
                       )}
                     </div>
@@ -277,7 +277,7 @@ const SkillTest: React.FC = () => {
             </div>
             <div>
               <h1 className="font-bold uppercase">
-                {formData.currentScore || "0"} / 15
+                {formData.correctAnswer || "0"} / 15
               </h1>
               <p className="text-sm text-[#9B9B9B]">Current Score</p>
             </div>
